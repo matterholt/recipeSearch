@@ -17,11 +17,11 @@ const useStyles = makeStyles({
     alignItems: 'center',
     margin: '5px'
   }
-
 })
 
 const reciKey = process.env.REACT_APP_KEY
 const APIPath = `https://api.spoonacular.com/recipes/random?apiKey=${reciKey}&number=5`
+
 
 const EmptyCardRecipe = () => {
   const daily = [
@@ -30,21 +30,38 @@ const EmptyCardRecipe = () => {
     { day: 'Wednesday', dayValue: 3, recipe: [] },
     { day: 'Thursday', dayValue: 4, recipe: [] },
     { day: 'Friday', dayValue: 5, recipe: [] },
-    { day: 'Saturday', dayValue: 6, recipe: [] },
-    { day: 'Sunday', dayValue: 7, recipe: [] },
   ];
   const weeklyRecipe = useStyles()
 
   return (
     <div className={weeklyRecipe.Container}>
-      {daily.map((dayEntry) => <Card key={dayEntry.dayValue}><h3>{dayEntry.day}</h3></Card>)}
+      {daily.map((dayEntry) =>
+        <div>
+          <h3>{dayEntry.day}</h3>
+          <Card key={dayEntry.dayValue}><p>No items added</p></Card>
+        </div>
+
+
+
+      )}
     </div>
   )
 }
 
+
+
+const ItemCheck = (props) => {
+  return (
+    <div>
+      <Button> Remove</Button>
+      <Button> Info</Button>
+    </div>
+  )
+}
 function App() {
   const [isFetching, setIsFetching] = useState(false)
   const [foodList, updateFoodList] = useState([])
+  const [addedFood, updateAddedFood] = useState([])
 
   function wklyRandomRecipe() {
     setIsFetching(true)
@@ -57,6 +74,9 @@ function App() {
   function clearRecipeLineUp() {
     updateFoodList([])
   }
+  function selectRecipe(selectedItem) {
+    updateAddedFood(...addedFood, selectedItem)
+  }
 
   return (
     <div >
@@ -65,10 +85,10 @@ function App() {
         <div>
           <Button variant="contained" color="primary" onClick={wklyRandomRecipe}>Random</Button>
           <Button variant="contained" color="secondary" onClick={clearRecipeLineUp}>Clear</Button>
-
         </div>
         <EmptyCardRecipe />
       </header>
+      <h2>Recipe List</h2>
       {isFetching ? <FetchingData /> : null}
       < RecipeTable recipeList={foodList} />
     </div>
