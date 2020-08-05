@@ -1,0 +1,50 @@
+0: {
+    …}​​
+aggregateLikes: 36​​
+analyzedInstructions: Array[{
+    …}]​​
+cheap: false​​
+creditsText: "Foodista.com – The Cooking Encyclopedia Everyone Can Edit"​​
+cuisines: Array[]​​
+dairyFree: false​​
+diets: Array["lacto ovo vegetarian"]​​
+dishTypes: Array(3)["morning meal", "brunch", "breakfast"]​​
+extendedIngredients: Array(9)[{
+    …}, {
+    …}, {
+    …}, …]​​
+gaps: "no"​​
+glutenFree: false​​
+healthScore: 5​​
+id: 648339​​
+image: "https://spoonacular.com/recipeImages/648339-556x370.jpg"​​
+imageType: "jpg"​​
+instructions: "Heat oven to 350\nLightly grease loaf pan, 9x5x3 or two mini muffin pans with cooking spray.\nStir together flour, cheese, baking powder, and salt in medium bowl. Add olive oil, egg and milk, stir till combined. Fold in jalapenos.\nPour into pan\nBake 30 to 45 minutes or until golden brown and toothpick inserted in center comes out clean. Cool 5 minutes; run knife around edges of pan to loosen. Remove from pan to wire rack. Cool 30 minutes before slicing, if you can wait that long, I didnt."​​
+license: "CC BY 3.0"​​
+lowFodmap: false​​
+occasions: Array[]​​
+originalId: null​​
+pricePerServing: 22.21​​
+readyInMinutes: 45​​
+servings: 12​​
+sourceName: "Foodista"​​
+sourceUrl: "https://www.foodista.com/recipe/Q5S66TH2/jalapeno-cheese-quick-bread"​​
+spoonacularScore: 47​​
+spoonacularSourceUrl: "https://spoonacular.com/jalapeno-cheese-quick-bread-648339"​​
+summary: "The recipe Jalapeno Cheese Quick Bread can be made <b>in around around 45 minutes</b>. This breakfast has <b>114 calories</b>, <b>5g of protein</b>, and <b>5g of fat</b> per serving. This recipe serves 12 and costs 22 cents per serving. 36 people were impressed by this recipe. This recipe from Foodista requires pickled jalapenos, egg, olive oil, and cheddar cheese. It is a good option if you're following a <b>lacto ovo vegetarian</b> diet. Overall, this recipe earns a <b>solid spoonacular score of 47%</b>. If you like this recipe, you might also like recipes such as <a href=\"https://spoonacular.com/recipes/jalapeo-corn-beer-quick-bread-142141\">Jalapeño-Corn-Beer Quick Bread</a>, <a href=\"https://spoonacular.com/recipes/jalapeo-summer-squash-quick-bread-for-breadbakers-669814\">Jalapeño Summer Squash Quick Bread for #BreadBakers</a>, and <a href=\"https://spoonacular.com/recipes/jalapeno-cheese-bread-for-bread-machine-144061\">Jalapeno Cheese Bread for Bread Machine</a>."​​
+sustainable: false​​
+title: "Jalapeno Cheese Quick Bread"​​
+vegan: false​​
+vegetarian: true​​
+veryHealthy: false​​
+veryPopular: false​​
+weightWatcherSmartPoints: 3​​
+winePairing: {
+    …}​​​
+pairedWines: Array(3)["cream sherry", "moscato dasti", "port"]​​​
+pairingText: "Quickbread can be paired with Cream Sherry, Moscato d'Asti, and Port. A common wine pairing rule is to make sure your wine is sweeter than your food. Delicate desserts go well with Moscato d'Asti, nutty desserts with cream sherry, and caramel or chocolate desserts pair well with port. You could try NV Johnson Estate Cream Sherry. Reviewers quite like it with a 5 out of 5 star rating and a price of about 19 dollars per bottle."​​​
+productMatches: (1)[…]​​​​
+0: Object {
+        id: 430626,
+        title: "NV Johnson Estate Cream Sherry",
+        description: "Very aromatic with notes of hazelnut, vanilla, and a touch of oak followed by sweet raisins and a touch of yeast. Clean lasting finish. Good now but will reward those allow it to age\"\". A favorite pre-prandial beverage. Consider it with nuts before dinner as an aperitif, or after dinner with dessert, es

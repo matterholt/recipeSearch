@@ -30,12 +30,12 @@ const RecipeHeader = () => {
 }
 
 const RecipeRows = ({ recipeItem, selectRecipe }) => {
-    const recipeName = { title: recipeItem.title }
+    const recipeName = recipeItem.title
     return (
         <TableRow>
             <TableCell><button onClick={() => selectRecipe(recipeName)}>ADD</button></TableCell>
             <TableCell>{recipeItem.title}</TableCell>
-            <TableCell><img src={recipeItem.image} width="50px" alt={`recipeItem.title`} /></TableCell>
+            <TableCell><img src={recipeItem.image} width="50px" alt='food cook in recipe' /></TableCell>
             <TableCell>{<span dangerouslySetInnerHTML={{ __html: recipeItem.summary }}>
             </span>}</TableCell>
             <TableCell>Detail</TableCell>

@@ -31,21 +31,26 @@ const EmptyCardRecipe = ({ choosenRecipes }) => {
     { day: 'Thursday', dayValue: 4, recipe: [] },
     { day: 'Friday', dayValue: 5, recipe: [] },
   ];
+
   const weeklyRecipe = useStyles()
 
+
+  function AssignRecipe() {
+    // for the index in daily add the recipe that was selected 
+  }
   return (
     <div className={weeklyRecipe.Container}>
-      {daily.map((dayEntry) =>
+      {daily.map((dayEntry, index) =>
         <div>
           <h3>{dayEntry.day}</h3>
-          <Card key={dayEntry.dayValue}><p>No items added</p></Card>
+          <Card key={index}>
+            <p>{choosenRecipes[index] ? choosenRecipes[index] : "no plans"}</p>
+          </Card>
         </div>
       )}
     </div>
   )
 }
-
-
 
 const ItemCheck = (props) => {
   return (
@@ -60,6 +65,7 @@ function App() {
   const [foodList, updateFoodList] = useState([])
   const [selectedFood, updateSelectedFood] = useState([])
 
+
   function wklyRandomRecipe() {
     setIsFetching(true)
     fetch(APIPath)
@@ -70,6 +76,7 @@ function App() {
   }
   function clearRecipeLineUp() {
     updateFoodList([])
+    updateSelectedFood([])
   }
   function selectRecipe(selectedItem) {
     // remove id from the main food list
@@ -81,9 +88,6 @@ function App() {
     }
 
   }
-  useEffect(() => {
-    console.log(selectedFood)
-  }, [selectedFood])
 
   return (
     <div >
@@ -93,10 +97,10 @@ function App() {
           <Button variant="contained" color="primary" onClick={wklyRandomRecipe}>Random</Button>
           <Button variant="contained" color="secondary" onClick={clearRecipeLineUp}>Clear</Button>
         </div>
-        <EmptyCardRecipe />
+        <EmptyCardRecipe choosenRecipes={selectedFood} />
       </header>
       <h2>Recipe List</h2>
-      {isFetching ? <FetchingData /> : null}
+      {isFetching ? <FetchingData /> : "Fetching Data"}
       < RecipeTable recipeList={foodList} selectRecipe={selectRecipe} />
     </div>
   );
