@@ -23,7 +23,7 @@ const reciKey = process.env.REACT_APP_KEY
 const APIPath = `https://api.spoonacular.com/recipes/random?apiKey=${reciKey}&number=5`
 
 
-const EmptyCardRecipe = () => {
+const EmptyCardRecipe = ({ choosenRecipes }) => {
   const daily = [
     { day: 'Monday', dayValue: 1, recipe: [] },
     { day: 'Tuesday', dayValue: 2, recipe: [] },
@@ -40,9 +40,6 @@ const EmptyCardRecipe = () => {
           <h3>{dayEntry.day}</h3>
           <Card key={dayEntry.dayValue}><p>No items added</p></Card>
         </div>
-
-
-
       )}
     </div>
   )
@@ -61,7 +58,7 @@ const ItemCheck = (props) => {
 function App() {
   const [isFetching, setIsFetching] = useState(false)
   const [foodList, updateFoodList] = useState([])
-  const [addedFood, updateAddedFood] = useState([])
+  const [selectedFood, updateSelectedFood] = useState([])
 
   function wklyRandomRecipe() {
     setIsFetching(true)
@@ -75,8 +72,18 @@ function App() {
     updateFoodList([])
   }
   function selectRecipe(selectedItem) {
-    updateAddedFood(...addedFood, selectedItem)
+    // remove id from the main food list
+    if (selectedFood.length < 5) {
+      updateSelectedFood([...selectedFood, selectedItem])
+      console.log(selectedItem)
+    } else {
+      alert("Too many recipes this week ")
+    }
+
   }
+  useEffect(() => {
+    console.log(selectedFood)
+  }, [selectedFood])
 
   return (
     <div >
@@ -90,7 +97,7 @@ function App() {
       </header>
       <h2>Recipe List</h2>
       {isFetching ? <FetchingData /> : null}
-      < RecipeTable recipeList={foodList} />
+      < RecipeTable recipeList={foodList} selectRecipe={selectRecipe} />
     </div>
   );
 }

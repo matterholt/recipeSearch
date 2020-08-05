@@ -29,27 +29,29 @@ const RecipeHeader = () => {
     )
 }
 
-const RecipeRows = ({ recipeItem }) => {
+const RecipeRows = ({ recipeItem, selectRecipe }) => {
+    const recipeName = { title: recipeItem.title }
     return (
         <TableRow>
-            <TableCell>Add</TableCell>
+            <TableCell><button onClick={() => selectRecipe(recipeName)}>ADD</button></TableCell>
             <TableCell>{recipeItem.title}</TableCell>
             <TableCell><img src={recipeItem.image} width="50px" alt={`recipeItem.title`} /></TableCell>
             <TableCell>{<span dangerouslySetInnerHTML={{ __html: recipeItem.summary }}>
             </span>}</TableCell>
             <TableCell>Detail</TableCell>
-        </TableRow>
+        </TableRow >
     )
 }
 
-const RecipeTable = ({ recipeList }) => {
+const RecipeTable = ({ recipeList, selectRecipe }) => {
     return (
         <TableContainer>
 
             <Table>
                 <RecipeHeader />
                 <TableBody>
-                    {recipeList.map((recipeData) => <RecipeRows recipeItem={recipeData} />)}
+                    {recipeList.map((recipeData) =>
+                        <RecipeRows recipeItem={recipeData} selectRecipe={selectRecipe} />)}
                 </TableBody>
 
             </Table>
