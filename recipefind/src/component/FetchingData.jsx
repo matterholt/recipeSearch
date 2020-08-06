@@ -8,8 +8,15 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'center',
         height: '150px',
+        width: '550px',
+        position: 'absolute',
+        top: '35vh',
+        left: '25vw',
         flexFlow: 'column',
         alignItems: 'center',
+        background: '#ffbfbf',
+        borderRadius: '10px'
+
     }
 
 })

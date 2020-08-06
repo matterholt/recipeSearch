@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button'
 
 
 const reciKey = process.env.REACT_APP_KEY
-const APIPath = `https://api.spoonacular.com/recipes/random?apiKey=${reciKey}&number=5`
+const APIPath = `https://api.spoonacular.com/recipes/random?apiKey=${reciKey}&number=10`
 
 
 
@@ -48,7 +48,6 @@ function App() {
 
   function selectRecipe(selectedItem) {
     removeSelectItemMainList(selectedItem)
-    // remove id from the main food list filter foodlist return the what is still there
     if (selectedFood.length < 5) {
       updateSelectedFood([...selectedFood, selectedItem])
     } else {

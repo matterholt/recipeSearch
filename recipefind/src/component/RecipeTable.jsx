@@ -7,14 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-// const recipeObject____temp = (
-//     <li key={recipeInfo.id} className="recipe__card">
-//         <h2>{recipeInfo.title}</h2>
-//         <p>Time:{recipeInfo.readyInMinutes} mins</p>
-//         <div><img src={recipeInfo.image} width="150px" /></div>
-//         <div dangerouslySetInnerHTML={{ __html: recipeInfo.summary }} />
-//     </li>
-// )
+
 const RecipeHeader = () => {
     return (
         <TableHead>
@@ -23,7 +16,6 @@ const RecipeHeader = () => {
                 <TableCell>Title</TableCell>
                 <TableCell>Image</TableCell>
                 <TableCell>Summary</TableCell>
-                <TableCell>Detail</TableCell>
             </TableRow>
         </TableHead>
     )
@@ -39,7 +31,6 @@ const RecipeRows = ({ recipeItem, selectRecipe }) => {
             <TableCell><img src={recipeItem.image} width="50px" alt='food cook in recipe' /></TableCell>
             <TableCell>{<span dangerouslySetInnerHTML={{ __html: recipeItem.summary }}>
             </span>}</TableCell>
-            <TableCell>Detail</TableCell>
         </TableRow >
     )
 }

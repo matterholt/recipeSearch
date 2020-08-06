@@ -1,14 +1,15 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles({
     Container: {
         display: 'flex',
-        justifyContent: 'space-evenly',
         width: '100vw',
-        alignItems: 'center',
-        margin: '5px'
+        margin: '5px',
+        fontSize: '12px'
     }
 })
 
@@ -27,9 +28,11 @@ const WeeklyRecipeList = ({ choosenRecipes }) => {
         <div className={weeklyRecipe.Container}>
             {daily.map((dayEntry, index) =>
                 <div key={index}>
-                    <h3>{dayEntry.day}</h3>
-                    <Card key={index}>
-                        <p>{choosenRecipes[index] ? choosenRecipes[index].title : "no plans"}</p>
+                    <h3>{dayEntry.day}</h3>                <Card key={index}>
+
+                        <CardContent>
+                            {choosenRecipes[index] ? <CardHeader title={choosenRecipes[index].title} /> : "no plans"}
+                        </CardContent>
                     </Card>
                 </div>
             )}
