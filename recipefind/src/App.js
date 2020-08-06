@@ -60,12 +60,13 @@ function App() {
     <div >
       <header className="App-header">
         <h1>Recipe Planner</h1>
-        <div>
-          <Button variant="contained" color="primary" onClick={wklyRandomRecipe}>Random</Button>
-          <Button variant="contained" color="secondary" onClick={clearRecipeLineUp}>Clear</Button>
-        </div>
+
         <WeeklyRecipeList choosenRecipes={selectedFood} />
       </header>
+      <div>
+        <Button variant="contained" color="primary" onClick={wklyRandomRecipe}>Random</Button>
+        <Button variant="contained" color="secondary" onClick={clearRecipeLineUp}>Clear</Button>
+      </div>
       <h2>Recipe List</h2>
       {isFetching ? <FetchingData /> : null}
       < RecipeTable recipeList={foodList} selectRecipe={selectRecipe} />

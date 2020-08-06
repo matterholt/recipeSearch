@@ -6,11 +6,31 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useTableStyle = makeStyles({
+    tableContainer: {
+        display: 'grid',
+        placeItems: 'center',
+        backgroundColor: '#e8e8e8',
+    },
+    table: {
+        width: '90vw',
+    },
+    header: {
+        textAlign: 'center',
+        fontWeight: "900",
+        backgroundColor: 'gray',
+    }
+})
 
 const RecipeHeader = () => {
+    const classes = useTableStyle()
     return (
-        <TableHead>
+        <TableHead className={classes.header}>
             <TableRow>
                 <TableCell>Add</TableCell>
                 <TableCell>Title</TableCell>
@@ -36,10 +56,10 @@ const RecipeRows = ({ recipeItem, selectRecipe }) => {
 }
 
 const RecipeTable = ({ recipeList, selectRecipe }) => {
+    const classes = useTableStyle()
     return (
-        <TableContainer>
-
-            <Table>
+        <TableContainer component={Paper} className={classes.tableContainer}>
+            <Table className={classes.table}>
                 <RecipeHeader />
                 <TableBody>
                     {recipeList.map((recipeData) =>
@@ -48,7 +68,6 @@ const RecipeTable = ({ recipeList, selectRecipe }) => {
 
             </Table>
         </TableContainer>
-
     )
 }
 
