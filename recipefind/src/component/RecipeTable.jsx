@@ -30,7 +30,8 @@ const RecipeHeader = () => {
 }
 
 const RecipeRows = ({ recipeItem, selectRecipe }) => {
-    const recipeName = recipeItem.title
+    const recipeName = { title: recipeItem.title, id: recipeItem.id }
+
     return (
         <TableRow>
             <TableCell><button onClick={() => selectRecipe(recipeName)}>ADD</button></TableCell>
