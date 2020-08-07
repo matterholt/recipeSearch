@@ -6,7 +6,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -56,21 +55,26 @@ const RecipeRows = ({ recipeItem, selectRecipe }) => {
         </TableRow >
     )
 }
+const NoItem = () => (<h3>No Items Yet! </h3>)
 
 const RecipeTable = ({ recipeList, selectRecipe }) => {
     const classes = useTableStyle()
-    return (
-        <TableContainer className={classes.tableContainer} >
-            <Table className={classes.table}>
-                <RecipeHeader />
-                <TableBody>
-                    {recipeList.map((recipeData) =>
-                        <RecipeRows recipeItem={recipeData} selectRecipe={selectRecipe} />)}
-                </TableBody>
-            </Table>
-        </TableContainer>
-
-    )
+    if (recipeList.length !== 0) {
+        return (
+            <TableContainer className={classes.tableContainer} >
+                <Table className={classes.table}>
+                    <RecipeHeader />
+                    <TableBody>
+                        {recipeList.map((recipeData) =>
+                            <RecipeRows recipeItem={recipeData} selectRecipe={selectRecipe} />)}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        )
+    } else {
+        return <div className={classes.tableContainer}><NoItem />
+        </div>
+    }
 }
 
 export default RecipeTable

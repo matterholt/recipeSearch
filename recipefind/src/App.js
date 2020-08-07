@@ -6,14 +6,16 @@ import FetchingData from './component/FetchingData'
 import WeeklyRecipeList from './component/WeeklyRecipeList'
 
 import Button from '@material-ui/core/Button'
-
-
-
+import { makeStyles } from '@material-ui/core/styles';
 
 const reciKey = process.env.REACT_APP_KEY
 const APIPath = `https://api.spoonacular.com/recipes/random?apiKey=${reciKey}&number=10`
 
-
+const mainStyle = makeStyles({
+  ultilityBar: {
+    padding: '10px '
+  }
+})
 
 const ItemCheck = (props) => {
   return (
@@ -24,6 +26,8 @@ const ItemCheck = (props) => {
   )
 }
 function App() {
+
+  // custom hooks
   const [isFetching, setIsFetching] = useState(false)
   const [foodList, updateFoodList] = useState([])
   const [selectedFood, updateSelectedFood] = useState([])
@@ -45,7 +49,6 @@ function App() {
     const removedItem = foodList.filter(item => item.id !== selectedItem.id)
     updateFoodList(removedItem)
   }
-
   function selectRecipe(selectedItem) {
     removeSelectItemMainList(selectedItem)
     if (selectedFood.length < 5) {
@@ -56,20 +59,22 @@ function App() {
 
   }
 
+
+  const classses = mainStyle()
+
   return (
     <div >
       <header className="App-header">
         <h1>Recipe Planner</h1>
-
         <WeeklyRecipeList choosenRecipes={selectedFood} />
       </header>
-      <div>
+      <div className={classses.ultilityBar}>
         <Button variant="contained" color="primary" onClick={wklyRandomRecipe}>Random</Button>
         <Button variant="contained" color="secondary" onClick={clearRecipeLineUp}>Clear</Button>
       </div>
-      <h2>Recipe List</h2>
       {isFetching ? <FetchingData /> : null}
       {/* no show on empty table */}
+      {}
       < RecipeTable recipeList={foodList} selectRecipe={selectRecipe} />
 
     </div>

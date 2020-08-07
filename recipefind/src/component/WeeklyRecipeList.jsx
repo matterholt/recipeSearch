@@ -28,8 +28,8 @@ const WeeklyRecipeList = ({ choosenRecipes }) => {
         <div className={weeklyRecipe.Container}>
             {daily.map((dayEntry, index) =>
                 <div key={index}>
-                    <h3>{dayEntry.day}</h3>                <Card key={index}>
-
+                    <h3>{dayEntry.day}</h3>
+                    <Card key={index}>
                         <CardContent>
                             {choosenRecipes[index] ? <CardHeader title={choosenRecipes[index].title} /> : "no plans"}
                         </CardContent>
