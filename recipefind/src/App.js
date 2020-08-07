@@ -29,6 +29,10 @@ function App() {
       .catch((e) => console.log(e))
     setIsFetching(false)
   }
+  function removeSelectItemMainList(selectedItem) {
+    const removedItem = foodList.filter(item => item.id !== selectedItem.id)
+    updateFoodList(removedItem)
+  }
   // functions below create custom hook using useReduce
   function clearRecipeLineUp() {
     // remove all recipes that have been selected to the list
@@ -38,15 +42,12 @@ function App() {
     addRecipeLiked([...recipesLiked, favRecipe])
   }
   function saveForLater(selectedItem) {
+    removeSelectItemMainList(selectedItem)
     addRecipeSaved([...recipesSaved, selectedItem])
   }
-  function removeSelectItemMainList(selectedItem) {
-    const removedItem = foodList.filter(item => item.id !== selectedItem.id)
-    updateFoodList(removedItem)
-  }
   function selectRecipe(selectedItem) {
-    removeSelectItemMainList(selectedItem)
     if (selectedFood.length < 5) {
+      removeSelectItemMainList(selectedItem)
       updateSelectedFood([...selectedFood, selectedItem])
     } else {
       alert("Too many recipes this week ")

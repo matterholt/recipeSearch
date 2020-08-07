@@ -31,7 +31,8 @@ const tempDataDesign = {
     ]
 }
 
-export default function RecipeCard({ recipeInfo, selectRecipe }) {
+export default function RecipeCard({ recipeInfo, selectRecipe, saveForLater }) {
+    const selectedRecipe = { title: recipeInfo.title, id: recipeInfo.id }
     const classes = useStyles();
 
     return (
@@ -52,16 +53,10 @@ export default function RecipeCard({ recipeInfo, selectRecipe }) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary" onClick={selectRecipe}>
-                    ADD
-        </Button>
-                <Button size="small" color="primary" onClick={saveForLater}>
-                    SAVE
-        </Button>
 
-                <Button size="small" color="primary">
-                    DETAILS
-        </Button>
+                <Button size="small" color="primary" onClick={() => selectRecipe(selectedRecipe)}>ADD</Button>
+                <Button size="small" color="primary" onClick={() => saveForLater(selectedRecipe)}>SAVE</Button>
+                <Button size="small" color="primary">DETAILS</Button>
             </CardActions>
         </Card >
     );

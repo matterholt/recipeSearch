@@ -13,12 +13,16 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function RandomRecipeContainer({ recipeList }) {
+function RandomRecipeContainer({ recipeList, selectRecipe, saveForLater }) {
     const classes = useStyles();
     if (recipeList.length !== 0) {
         return (
             <Grid spacing={2} className={classes.root}>
-                {recipeList.map((recipeInfo) => <RecipeCard recipeInfo={recipeInfo} />)}
+                {recipeList.map((recipeInfo) =>
+                    <RecipeCard
+                        recipeInfo={recipeInfo}
+                        selectRecipe={selectRecipe}
+                        saveForLater={saveForLater} />)}
             </Grid>
 
         )
