@@ -13,12 +13,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useTableStyle = makeStyles({
     tableContainer: {
-        display: 'grid',
-        placeItems: 'center',
-        backgroundColor: '#e8e8e8',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: ' 100vw',
     },
     table: {
         width: '90vw',
+        backgroundColor: '#f6f6f6',
     },
     header: {
         textAlign: 'center',
@@ -58,16 +60,16 @@ const RecipeRows = ({ recipeItem, selectRecipe }) => {
 const RecipeTable = ({ recipeList, selectRecipe }) => {
     const classes = useTableStyle()
     return (
-        <TableContainer component={Paper} className={classes.tableContainer}>
+        <TableContainer className={classes.tableContainer} >
             <Table className={classes.table}>
                 <RecipeHeader />
                 <TableBody>
                     {recipeList.map((recipeData) =>
                         <RecipeRows recipeItem={recipeData} selectRecipe={selectRecipe} />)}
                 </TableBody>
-
             </Table>
         </TableContainer>
+
     )
 }
 

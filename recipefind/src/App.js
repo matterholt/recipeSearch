@@ -69,7 +69,9 @@ function App() {
       </div>
       <h2>Recipe List</h2>
       {isFetching ? <FetchingData /> : null}
+      {/* no show on empty table */}
       < RecipeTable recipeList={foodList} selectRecipe={selectRecipe} />
+
     </div>
   );
 }
