@@ -4,27 +4,14 @@ import './App.css';
 import RecipeTable from './component/RecipeTable'
 import FetchingData from './component/FetchingData'
 import WeeklyRecipeList from './component/WeeklyRecipeList'
+import ActionBar from './component/ActionBar'
 
-import Button from '@material-ui/core/Button'
-import { makeStyles } from '@material-ui/core/styles';
 
 const reciKey = process.env.REACT_APP_KEY
 const APIPath = `https://api.spoonacular.com/recipes/random?apiKey=${reciKey}&number=10`
 
-const mainStyle = makeStyles({
-  ultilityBar: {
-    padding: '10px '
-  }
-})
 
-const ItemCheck = (props) => {
-  return (
-    <div>
-      <Button> Remove</Button>
-      <Button> Info</Button>
-    </div>
-  )
-}
+
 function App() {
 
   // custom hooks
@@ -34,6 +21,7 @@ function App() {
 
 
   function wklyRandomRecipe() {
+    updateFoodList([])
     setIsFetching(true)
     fetch(APIPath)
       .then((response) => response.json())
@@ -42,8 +30,14 @@ function App() {
     setIsFetching(false)
   }
   function clearRecipeLineUp() {
-    updateFoodList([])
+    // remove all recipes that have been selected to the list
     updateSelectedFood([])
+
+    // change to allow the random button to "refresh"
+
+  }
+  function addToLikeed() {
+    // add to the favorite recipe list
   }
   function removeSelectItemMainList(selectedItem) {
     const removedItem = foodList.filter(item => item.id !== selectedItem.id)
@@ -59,19 +53,14 @@ function App() {
 
   }
 
-
-  const classses = mainStyle()
-
   return (
     <div >
       <header className="App-header">
         <h1>Recipe Planner</h1>
         <WeeklyRecipeList choosenRecipes={selectedFood} />
       </header>
-      <div className={classses.ultilityBar}>
-        <Button variant="contained" color="primary" onClick={wklyRandomRecipe}>Random</Button>
-        <Button variant="contained" color="secondary" onClick={clearRecipeLineUp}>Clear</Button>
-      </div>
+      <ActionBar wklyRandomRecipe={wklyRandomRecipe} clearRecipeLineUp={clearRecipeLineUp} />
+
       {isFetching ? <FetchingData /> : null}
       {/* no show on empty table */}
       {}
