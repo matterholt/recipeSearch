@@ -5,6 +5,7 @@ import RecipeTable from './component/RecipeTable'
 import FetchingData from './component/FetchingData'
 import WeeklyRecipeList from './component/WeeklyRecipeList'
 import ActionBar from './component/ActionBar'
+import { findByLabelText } from '@testing-library/react';
 
 
 const reciKey = process.env.REACT_APP_KEY
@@ -18,6 +19,7 @@ function App() {
   const [isFetching, setIsFetching] = useState(false)
   const [foodList, updateFoodList] = useState([])
   const [selectedFood, updateSelectedFood] = useState([])
+  const [recipesLiked, addRecipeLiked] = useState([])
 
 
   function wklyRandomRecipe() {
@@ -36,8 +38,8 @@ function App() {
     // change to allow the random button to "refresh"
 
   }
-  function addToLikeed() {
-    // add to the favorite recipe list
+  function addToLiked(favRecipe) {
+    addRecipeLiked([...recipesLiked, favRecipe])
   }
   function removeSelectItemMainList(selectedItem) {
     const removedItem = foodList.filter(item => item.id !== selectedItem.id)
@@ -59,11 +61,9 @@ function App() {
         <h1>Recipe Planner</h1>
         <WeeklyRecipeList choosenRecipes={selectedFood} />
       </header>
-      <ActionBar wklyRandomRecipe={wklyRandomRecipe} clearRecipeLineUp={clearRecipeLineUp} />
+      <ActionBar addToLiked={addToLiked} wklyRandomRecipe={wklyRandomRecipe} clearRecipeLineUp={clearRecipeLineUp} />
 
       {isFetching ? <FetchingData /> : null}
-      {/* no show on empty table */}
-      {}
       < RecipeTable recipeList={foodList} selectRecipe={selectRecipe} />
 
     </div>
