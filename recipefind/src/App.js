@@ -29,7 +29,15 @@ function App() {
   const [recipesLiked, addRecipeLiked] = useState([])
   const [recipesSaved, addRecipeSaved] = useState([])
 
-  useEffect(() => { console.log(foodList) }, [foodList])
+  useEffect(() => {
+    if (foodList.length <= 11) {
+      wklyRandomRecipe()
+    }
+    console.log(foodList)
+  }, [foodList])
+
+
+
   function wklyRandomRecipe() {
     const quantity = 12 - foodList.length
     const APIPath = `https://api.spoonacular.com/recipes/random?apiKey=${reciKey}&number=${quantity}`
@@ -47,6 +55,12 @@ function App() {
     }
     fetchRecipes()
   }
+
+  function newRandomGeneration() {
+    updateFoodList([])
+  }
+
+
   function removeSelectItemMainList(selectedItem) {
     const removedItem = foodList.filter(item => item.id !== selectedItem.id)
     updateFoodList(removedItem)
@@ -65,12 +79,9 @@ function App() {
   }
   function selectRecipe(selectedItem) {
     if (selectedFood.length < 5) {
-      //TOTODODODOD!!!! the list will not remove the selected item, 
-      //
       updateSelectedFood([...selectedFood, selectedItem])
       removeSelectItemMainList(selectedItem)
-      wklyRandomRecipe()
-      console.log(foodList)
+
     } else {
       alert("Too many recipes this week ")
     }
@@ -82,12 +93,13 @@ function App() {
         <h1>Recipe Planner</h1>
         <WeeklyRecipeList choosenRecipes={selectedFood} />
       </header>
-      <ActionBar addToLiked={addToLiked} wklyRandomRecipe={wklyRandomRecipe} clearRecipeLineUp={clearRecipeLineUp} />
+      <ActionBar addToLiked={addToLiked} wklyRandomRecipe={newRandomGeneration} clearRecipeLineUp={clearRecipeLineUp} />
       {isFetching ? <FetchingData /> : null}
       <RandomRecipeContainer
         recipeList={foodList}
         selectRecipe={selectRecipe}
         saveForLater={saveForLater}
+        removeItem={removeSelectItemMainList}
       />
 
     </div>

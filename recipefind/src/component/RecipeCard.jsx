@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function RecipeCard({ recipeInfo, selectRecipe, saveForLater }) {
+export default function RecipeCard({ recipeInfo, selectRecipe, saveForLater, removeItem }) {
     const selectedRecipe = { title: recipeInfo.title, id: recipeInfo.id }
     const classes = useStyles();
 
@@ -42,7 +42,7 @@ export default function RecipeCard({ recipeInfo, selectRecipe, saveForLater }) {
             <CardActions>
 
                 <Button size="small" color="primary" onClick={() => selectRecipe(selectedRecipe)}>ADD</Button>
-                <Button size="small" color="primary" onClick={() => saveForLater(selectedRecipe)}>SAVE</Button>
+                <Button size="small" color="primary" onClick={() => removeItem(selectedRecipe)}>DELETE</Button>
                 <Button size="small" color="primary">DETAILS</Button>
             </CardActions>
         </Card >
