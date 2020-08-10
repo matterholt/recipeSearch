@@ -29,14 +29,12 @@ function App() {
   const [recipesLiked, addRecipeLiked] = useState([])
   const [recipesSaved, addRecipeSaved] = useState([])
 
-  useEffect(() => {
-    if (foodList.length <= 11) {
-      wklyRandomRecipe()
-    }
-    console.log(foodList)
-  }, [foodList])
-
-
+  // useEffect(() => {
+  //   if (foodList.length <= 11) {
+  //     wklyRandomRecipe()
+  //   }
+  //   console.log(foodList)
+  // }, [foodList])
 
   function wklyRandomRecipe() {
     const quantity = 12 - foodList.length
@@ -59,8 +57,6 @@ function App() {
   function newRandomGeneration() {
     updateFoodList([])
   }
-
-
   function removeSelectItemMainList(selectedItem) {
     const removedItem = foodList.filter(item => item.id !== selectedItem.id)
     updateFoodList(removedItem)
@@ -72,6 +68,7 @@ function App() {
   }
   function addToLiked(favRecipe) {
     addRecipeLiked([...recipesLiked, favRecipe])
+
   }
   function saveForLater(selectedItem) {
     addRecipeSaved([...recipesSaved, selectedItem])
@@ -93,7 +90,11 @@ function App() {
         <h1>Recipe Planner</h1>
         <WeeklyRecipeList choosenRecipes={selectedFood} />
       </header>
-      <ActionBar addToLiked={addToLiked} wklyRandomRecipe={newRandomGeneration} clearRecipeLineUp={clearRecipeLineUp} />
+      <ActionBar
+        addToLiked={addToLiked}
+        wklyRandomRecipe={wklyRandomRecipe}
+        clearRecipeLineUp={clearRecipeLineUp}
+      />
       {isFetching ? <FetchingData /> : null}
       <RandomRecipeContainer
         recipeList={foodList}
