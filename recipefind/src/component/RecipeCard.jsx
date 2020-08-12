@@ -22,6 +22,21 @@ export default function RecipeCard({ recipeInfo, selectRecipe, saveForLater, rem
     const selectedRecipe = { title: recipeInfo.title, id: recipeInfo.id }
     const classes = useStyles();
 
+
+    function shortDescription() {
+        // try to make it with closures
+        // should check the word count not letter count
+        const wordCount = 25
+        const shortenSummary = recipeInfo.summary
+
+        return function getShortenDescript(str) {
+
+        }
+    }
+
+
+
+
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -35,12 +50,11 @@ export default function RecipeCard({ recipeInfo, selectRecipe, saveForLater, rem
                         {recipeInfo.title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        <span dangerouslySetInnerHTML={{ __html: recipeInfo.summary }} />
+                        <span dangerouslySetInnerHTML={{ __html: recipeInfo.summary.substr(0, 150) + '...' }} />
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
-
                 <Button size="small" color="primary" onClick={() => selectRecipe(selectedRecipe)}>ADD</Button>
                 <Button size="small" color="primary" onClick={() => removeItem(selectedRecipe)}>DELETE</Button>
                 <Button size="small" color="primary">DETAILS</Button>
