@@ -14,13 +14,19 @@ const useStyles = makeStyles({
         color: 'black',
     },
     selectedRecipes: {
+        flex: ' 1 1 150px',
         margin: '25px',
         background: 'gray',
         color: 'white',
         padding: '15px',
         borderRadius: '5px',
-    }
 
+    },
+    dayHeading: {
+        textAlign: 'center',
+        borderBottom: 'white 2px solid',
+        padding: '15px',
+    }
 })
 
 const WeeklyRecipeList = ({ choosenRecipes }) => {
@@ -38,10 +44,14 @@ const WeeklyRecipeList = ({ choosenRecipes }) => {
         <div className={weeklyRecipe.Container}>
             {daily.map((dayEntry, index) =>
                 <div key={index} className={weeklyRecipe.selectedRecipes}>
-                    <h3>{dayEntry.day}</h3>
+                    <h3 class={weeklyRecipe.dayHeading}>{dayEntry.day}</h3>
                     <div key={index}>
-                        {choosenRecipes[index] ? <CardHeader title={choosenRecipes[index].title} /> : "no plans"}
-                        <button>Recipe</button>
+                        {choosenRecipes[index] ?
+                            <>
+                                <CardHeader title={choosenRecipes[index].title} />
+                                <button>Recipe</button>
+                            </>
+                            : "no plans"}
                     </div>
                 </div>
             )}
