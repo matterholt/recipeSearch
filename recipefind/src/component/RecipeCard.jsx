@@ -35,8 +35,6 @@ export default function RecipeCard({ recipeInfo, selectRecipe, saveForLater, rem
     }
 
 
-
-
     return (
         <Card className={classes.root}>
             <CardActionArea>
