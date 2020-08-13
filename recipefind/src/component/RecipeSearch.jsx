@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-
+const reciKey = process.env.REACT_APP_KEY
 
 
 const useStyle = makeStyles({
@@ -16,27 +16,40 @@ const useStyle = makeStyles({
 
 export default function RecipeSearch() {
     const [searchItem, setSearchItem] = useState('')
+    const [query, setQuery] = useState('')
+    const [error, isError] = useState(false)
     const classes = useStyle();
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        console.log(searchItem)
 
-    }
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const searchPath = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${reciKey}&query=${query}`
+                const response = await fetch(searchPath)
+                const json = await response.json()
+                console.log(json)
+
+            } catch (e) {
+                isError(true)
+                console.log(e)
+            }
+        }
+        fetchData()
+
+    }, [query])
 
     return (
         <div className={classes.container}>
             <h3>Search</h3>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={e => { e.preventDefault(); setQuery(searchItem) }}>
                 <input
                     value={searchItem}
-                    onChange={e => setSearchItem(e.target.value)}
+                    onChange={e => { setSearchItem(e.target.value) }}
                     placeHolder="Search Recipe"
                 />
                 <button type='submit'>Search</button>
-
             </form>
-        </div>
+        </div >
 
     )
 }
