@@ -6,9 +6,15 @@ const reciKey = process.env.REACT_APP_KEY
 const useStyle = makeStyles({
     container: {
         display: 'grid',
-        backgroundColor: 'gray',
+        backgroundColor: '#bfbfbf',
         placeItems: 'center',
-        padding: '10px'
+        padding: '10px',
+        position: "absolute",
+        left: "50%",
+        top: '20%',
+        transform: 'translateX(-50%)',
+        width: '550px',
+        borderRadius: '5px'
     }
 })
 
@@ -47,6 +53,7 @@ export default function RecipeSearch() {
                     onChange={e => { setSearchItem(e.target.value) }}
                     placeHolder="Search Recipe"
                 />
+                <br />
                 <button type='submit'>Search</button>
             </form>
         </div >

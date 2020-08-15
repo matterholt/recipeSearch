@@ -6,7 +6,7 @@ import FetchingData from './component/FetchingData'
 import WeeklyRecipeList from './component/WeeklyRecipeList'
 import ActionBar from './component/ActionBar'
 import RandomRecipeContainer from './component/RandomRecipeContainer'
-import RecipeSearch from './component/RecipeSearch'
+
 
 
 const reciKey = process.env.REACT_APP_KEY
@@ -91,7 +91,7 @@ function App() {
         <h1>Recipe Planner</h1>
         <WeeklyRecipeList choosenRecipes={selectedFood} />
       </header>
-      <RecipeSearch />
+
       <ActionBar
         addToLiked={addToLiked}
         wklyRandomRecipe={wklyRandomRecipe}
